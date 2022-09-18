@@ -1,0 +1,20 @@
+version: "3.3"
+
+services:
+
+  pialert:
+    image: jokobsk/pi.alert
+    container_name: pialert
+    ports:
+      - "8200:20211/tcp"
+    environment:
+      - TZ=Europe/Madrid
+      - HOST_USER_ID=1000
+      - HOST_USER_GID=1000
+    network_mode: "host"
+    restart: unless-stopped
+    volumes:
+      - ./pialert/db:/home/pi/pialert/db
+      - ./pialert/config:/home/pi/pialert/config
+      
+      
